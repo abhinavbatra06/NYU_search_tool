@@ -1,0 +1,25 @@
+# Dependencies for NYU Scholar Search Tool
+
+# Web scraping
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+
+# Config
+pyyaml>=6.0
+
+# Data output
+pandas>=2.0.0
+openpyxl>=3.1.0  # Excel support for pandas
+
+# PDF processing
+PyPDF2>=3.0.0
+
+# Vector DB & Embeddings
+chromadb>=0.4.0
+openai>=1.0.0
+
+# Environment
+python-dotenv>=1.0.0
+
+# Web app
+streamlit>=1.30.0

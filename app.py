@@ -108,6 +108,8 @@ def generate_response(query: str, results: list, messages: list):
     context_parts = []
     for doc, meta, score in results[:5]:
         entry = f"Professor: {meta['faculty_name']}\n"
+        if meta.get('url'):
+            entry += f"Website: {meta['url']}\n"
         if meta.get('paper_title'):
             entry += f"Paper: {meta['paper_title']}\n"
         if meta.get('year'):
@@ -120,7 +122,8 @@ def generate_response(query: str, results: list, messages: list):
     # Build messages
     system_msg = """You are a helpful research assistant for NYU. Based on the faculty research information provided,
 recommend professors who match the user's query. Be specific about WHY each professor is relevant.
-Keep responses concise. Only recommend professors from the context. If no relevant info, say so."""
+Keep responses concise. Only recommend professors from the context. If no relevant info, say so.
+IMPORTANT: Always include the professor's website link when available, formatted as markdown: [Professor Name](URL)"""
     
     user_msg = f"""[Retrieved Faculty Information]
 {context}
@@ -213,7 +216,11 @@ if prompt := st.chat_input("What research topics are you interested in?"):
             for doc, meta, score in results:
                 col1, col2 = st.columns([3, 1])
                 with col1:
-                    st.markdown(f"**{meta['faculty_name']}**")
+                    # Link to faculty website if available
+                    if meta.get('url'):
+                        st.markdown(f"**[{meta['faculty_name']}]({meta['url']})**")
+                    else:
+                        st.markdown(f"**{meta['faculty_name']}**")
                     if meta.get('paper_title'):
                         st.caption(f"📄 {meta['paper_title'][:80]}...")
                     st.caption(f"Type: {meta['chunk_type']}")

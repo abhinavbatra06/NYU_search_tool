@@ -3,6 +3,7 @@ NYU Faculty Search - Streamlit App
 """
 
 import os
+import time
 import streamlit as st
 import chromadb
 from chromadb.utils import embedding_functions
@@ -16,9 +17,48 @@ st.set_page_config(
     layout="wide"
 )
 
+# Rate limit settings
+MAX_QUERIES_PER_MINUTE = 5
+MAX_QUERIES_PER_SESSION = 50
+
 # Paths
 DATA_DIR = Path(__file__).parent / "data"
 CHROMA_DIR = DATA_DIR / "chroma_db"
+
+
+def check_rate_limit():
+    """Check if user is within rate limits. Returns (allowed, message)."""
+    now = time.time()
+    
+    # Initialize tracking
+    if "query_timestamps" not in st.session_state:
+        st.session_state.query_timestamps = []
+    if "total_queries" not in st.session_state:
+        st.session_state.total_queries = 0
+    
+    # Clean old timestamps (older than 1 minute)
+    st.session_state.query_timestamps = [
+        ts for ts in st.session_state.query_timestamps 
+        if now - ts < 60
+    ]
+    
+    # Check session limit
+    if st.session_state.total_queries >= MAX_QUERIES_PER_SESSION:
+        return False, f"Session limit reached ({MAX_QUERIES_PER_SESSION} queries). Please refresh the page."
+    
+    # Check per-minute limit
+    if len(st.session_state.query_timestamps) >= MAX_QUERIES_PER_MINUTE:
+        wait_time = int(60 - (now - st.session_state.query_timestamps[0]))
+        return False, f"Rate limit reached. Please wait {wait_time} seconds."
+    
+    return True, ""
+
+
+def record_query():
+    """Record a query for rate limiting."""
+    st.session_state.query_timestamps.append(time.time())
+    st.session_state.total_queries += 1
+
 
 # Initialize clients (cached)
 @st.cache_resource
@@ -106,7 +146,7 @@ Keep responses concise. Only recommend professors from the context. If no releva
 
 # UI
 st.title("🎓 NYU Faculty Search")
-st.markdown("Find faculty members based on research interests, topics, or questions.")
+st.markdown("Find scholars based on research interests, topics, or questions.")
 
 # Initialize chat history
 if "messages" not in st.session_state:
@@ -116,7 +156,7 @@ if "messages" not in st.session_state:
 with st.sidebar:
     st.header("About")
     st.markdown("""
-    This tool helps you find NYU faculty based on their research.
+    This tool helps you find NYU scholars based on their research.
     
     **How it works:**
     1. Enter your research interest or question
@@ -131,9 +171,15 @@ with st.sidebar:
     
     if st.button("Clear Chat"):
         st.session_state.messages = []
+        st.session_state.total_queries = 0
+        st.session_state.query_timestamps = []
         st.rerun()
     
     st.divider()
+    
+    # Show rate limit status
+    remaining = MAX_QUERIES_PER_SESSION - st.session_state.get('total_queries', 0)
+    st.caption(f"Queries remaining: {remaining}/{MAX_QUERIES_PER_SESSION}")
     st.caption("Built with Streamlit + ChromaDB + OpenAI")
 
 # Display chat history
@@ -143,6 +189,15 @@ for message in st.session_state.messages:
 
 # Chat input
 if prompt := st.chat_input("What research topics are you interested in?"):
+    # Check rate limit
+    allowed, rate_msg = check_rate_limit()
+    if not allowed:
+        st.error(rate_msg)
+        st.stop()
+    
+    # Record query
+    record_query()
+    
     # Add user message
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):

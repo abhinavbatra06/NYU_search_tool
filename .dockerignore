@@ -1,0 +1,47 @@
+# Git
+.git
+.gitignore
+
+# Frontend
+frontend/node_modules
+frontend/dist
+frontend/.vite
+frontend/.env.local
+frontend/.env.*.local
+
+# Backend
+__pycache__
+*.pyc
+*.pyo
+*.egg-info
+.pytest_cache
+.coverage
+venv
+env
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Config
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log
+
+# Build artifacts
+build/
+dist/
+
+# Data (optional - uncomment if you don't want to include in image)
+# data/

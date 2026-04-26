@@ -1,0 +1,63 @@
+
+
+
+
+
+------- Semantic search ( Queries not exact keyword ) ------
+
+
+- RAW Data ( Pipeline at a fixed cadence) 
+	- Where 
+	- How well update 
+		- Website : Scraping 
+		- G-doc , s-heet 
+		- Notion 
+		- Email 
+
+- Storing 
+	- Database 
+		- cost 
+		- 100 / 10,000
+		- privacy 
+		- where od etcet c
+	- Vector space ( Embedding)
+		- How do we create vectors 
+			- OPen AI ( API / 0.8 per million)
+			 or 
+		 	- Inhouse 
+		 		- Host ( GPU )
+ 			- Free open source model 
+			- oprn AI , hemin, claude 
+
+	Database with vector stored 
+
+	
+- Retrival ( Most important)
+	- Recency 
+	- Tmeporal 
+	- Research paper cited ( sorted by citation )
+
+	- Prompt ( Retied text)
+
+
+	THis is out retirved text . I am xyz , tell me the {query} 
+
+- Inference 
+	
+	- LLM ( design LLM )
+	- UI 
+	- Alert to 
+	- Paid LLM , free , Compute 
+
+- Testing 
+	- Accuracy 
+	- ROUGE score 
+	- Giurdrails 
+	- Hallunication 
+	- Grounding 
+
+- Deployment 
+	- Served as API <> INtegrate 
+
+	- Design choices 
+		- Latency ( 18 . 8 , 30) & cost implication 

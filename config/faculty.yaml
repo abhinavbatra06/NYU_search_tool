@@ -1,0 +1,143 @@
+# Faculty URLs for crawling
+# Source: G-sheet
+
+faculty:
+  - name: "Maria Abascal"
+    url: "https://www.mariaabascal.org/"
+
+  - name: "Delia S. Baldassarri"
+    url: "https://deliabaldassarri.org/"
+
+  - name: "Chris Barker"
+    url: "https://cb125.github.io/"
+
+  - name: "Bart Bonikowski"
+    url: "https://wp.nyu.edu/bonikowski/"
+
+  - name: "Dean Chahim"
+    url: "https://as.nyu.edu/faculty/dean-chahim0.html"
+
+  - name: "Patrick Egan"
+    url: "https://wp.nyu.edu/egan/"
+
+  - name: "Guillaume R. Frechette"
+    url: "https://gfrechette.com/html/econ.htm"
+
+  - name: "Colin Jerolmack"
+    url: "https://sites.google.com/site/colinjerolmack/home"
+
+  - name: "David R. Kanter"
+    url: "https://davidrkanter.com/"
+
+  - name: "BK Lee"
+    url: "https://www.byungkyulee.com/"
+
+  - name: "Tal Linzen"
+    url: "https://as.nyu.edu/communications/client/as-site-staging/ssrh/find-scholar.html?challenge=d06e90d7-4d8f-4b88-9d8c-10b73beb60f1"
+
+  - name: "Gwyneth McClendon"
+    url: "https://sites.google.com/site/gwynethmcclendon/"
+
+  - name: "Sonali Shukla McDermid"
+    url: "https://sonalimcdermid.github.io/"
+
+  - name: "Cyrus Samii"
+    url: "https://cyrussamii.com/"
+
+  - name: "Andrew Schotter"
+    url: "https://wp.nyu.edu/schotter/"
+
+  - name: "Joshua A. Tucker"
+    url: "https://wp.nyu.edu/fas-joshuatucker/"
+
+  - name: "Jay Van Bavel"
+    url: "https://www.jayvanbavel.com/#comp-l3xyj7m6"
+
+  - name: "Sevgi Yuksel"
+    url: "https://www.sevgiyuksel.com/"
+
+  - name: "Simone Zhang"
+    url: "https://simonezhang.com/"
+
+  - name: "Christine Webb"
+    url: "https://www.cewebb.com"
+
+  - name: "Zuhad Hai"
+    url: "https://zuhadhai.com"
+
+  - name: "Pablo Querubin"
+    url: "https://sites.google.com/site/pabloquerubin/"
+
+  - name: "Jacob Faber"
+    url: "http://www.jacobfaber.com"
+
+  - name: "Alberto Bisin"
+    url: "https://wp.nyu.edu/albertobisin/"
+
+  - name: "David Cesarini"
+    url: "https://sites.google.com/a/nyu.edu/dac12/"
+
+  - name: "Radu Iovita"
+    url: "https://wp.nyu.edu/faculty-iovita/"
+
+  - name: "Amy Catalinac"
+    url: "https://www.amycatalinac.com"
+
+  - name: "Chris Dawes"
+    url: "https://sites.google.com/view/christopherdawes/publications"
+
+  - name: "Michael Gilligan"
+    url: "https://michaeljgilligan.com"
+
+  - name: "Cassandra Handan-Nader"
+    url: "https://slnader.github.io"
+
+  - name: "Arielle Bernhardt"
+    url: "https://www.ariellebernhardt.com"
+
+  - name: "Joyee Deb"
+    url: "https://sites.google.com/site/joyeedeb/"
+
+  - name: "Christopher Flinn"
+    url: "https://sites.google.com/view/cjflinn-homepage"
+
+  - name: "Debraj Ray"
+    url: "https://debrajray.com"
+
+  - name: "Martin Rotemberg"
+    url: "https://sites.google.com/view/mrotemberg/"
+
+  - name: "Audrey Tiew"
+    url: "https://sites.google.com/view/audreytiew/home"
+
+  - name: "Anna Vitali"
+    url: "https://www.annavitali.com"
+
+  - name: "Meredith Broussard"
+    url: "https://meredithbroussard.com"
+
+  - name: "Hilke Schellmann"
+    url: "https://www.hilkeschellmann.com"
+
+  - name: "Guillermina Altomonte"
+    url: "https://www.galtomonte.org"
+
+  - name: "Alex V. Barnard"
+    url: "https://alexvbarnard.org"
+
+  - name: "Christopher Barrie"
+    url: "https://www.cjbarrie.com"
+
+  - name: "Carly Knight"
+    url: "https://carlyrknight.org"
+
+  - name: "Timon McPhearson"
+    url: "https://urbansystemslab.com/"
+
+  - name: "Mingzhen Lu"
+    url: "https://www.mingzhenlu-lab.com"
+
+  - name: "Jane Anderson"
+    url: "https://www.janeanderson.com"
+
+  

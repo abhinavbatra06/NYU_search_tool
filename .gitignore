@@ -1,0 +1,26 @@
+# Environment variables
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+
+# Data outputs (optional - uncomment if you don't want to track)
+# data/faculty/
+# data/chroma_db/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+desktop.ini
+Thumbs.db
+
+# Temp files
+*.tmp
+~$*

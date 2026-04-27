@@ -1,6 +1,4 @@
 // Simple API client for the backend search endpoint
-import { getAuthToken } from './supabase'
-
 const RAW_API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000'
 // Accept either origin-only URLs or URLs that already include /api/v1.
 const API_BASE_URL = RAW_API_BASE_URL.replace(/\/+$/, '').replace(/\/api\/v1$/, '')
@@ -32,20 +30,14 @@ export async function searchFaculty(
   query: string,
   useHybrid: boolean = true
 ): Promise<SearchResponse> {
-  const token = await getAuthToken()
-  if (!token) {
-    throw new Error('Not authenticated. Please sign in again.')
-  }
-
   const response = await fetch(`${API_BASE}/search`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
     },
     body: JSON.stringify({
       query: query,
-      n_results: 5,
+      n_results: 8,
       use_hybrid: useHybrid,
     }),
   })

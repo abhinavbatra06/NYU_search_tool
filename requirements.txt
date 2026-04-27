@@ -29,10 +29,7 @@ fastapi>=0.104.0
 uvicorn[standard]>=0.24.0
 pydantic>=2.0.0
 
-# JWT verification
-PyJWT[crypto]>=2.8.0
-python-multipart>=0.0.6  # For form data parsing
+# Rate limiting
+slowapi>=0.1.9
 
-# Authentication (optional for launch one, needed for production)
-# supabase>=2.0.0
-# python-jose>=3.3.0
+python-multipart>=0.0.6  # For form data parsing

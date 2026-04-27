@@ -1,16 +1,18 @@
 """FastAPI entrypoint and route definitions."""
 
 from datetime import datetime
-from fastapi import FastAPI, HTTPException, status, Depends
+from fastapi import FastAPI, HTTPException, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pathlib import Path
 from openai import OpenAI
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
 
 from .config import Config
 from .startup import validate_startup, get_health_status
-from .auth import get_current_user
 from .schemas import SearchRequest, SearchResponse, SearchResult, Faculty, HealthStatus, StartupStatus
 from .services.chroma import initialize_chroma
 from .services.search import search_and_answer
@@ -39,12 +41,17 @@ chroma_client, chroma_collection = initialize_chroma(
     openai_api_key=Config.OPENAI_API_KEY
 )
 
+# Rate limiter — 20 search requests per minute per IP
+limiter = Limiter(key_func=get_remote_address)
+
 # FastAPI app
 app = FastAPI(
     title=Config.API_TITLE,
     description=Config.API_DESCRIPTION,
     version="1.0.0"
 )
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 # CORS — allow frontend dev server and production origins
 app.add_middleware(
@@ -76,22 +83,22 @@ async def startup_check():
 
 
 @app.post("/api/v1/search", response_model=SearchResponse)
+@limiter.limit("20/minute")
 async def search(
-    request: SearchRequest,
-    user: dict = Depends(get_current_user)
+    request: Request,
+    body: SearchRequest
 ):
     """
     Search for faculty based on research interests or questions.
-    
-    Requires authentication via Bearer token.
+    Rate limited to 20 requests per minute per IP.
     """
     try:
         # Perform search and answer generation
         results, answer = search_and_answer(
             client=openai_client,
             collection=chroma_collection,
-            query=request.query,
-            use_hybrid=request.use_hybrid,
+            query=body.query,
+            use_hybrid=body.use_hybrid,
             conversation_history=None
         )
 
@@ -118,7 +125,7 @@ async def search(
         response = SearchResponse(
             results=formatted_results,
             answer=answer,
-            query=request.query,
+            query=body.query,
             timestamp=datetime.utcnow().isoformat()
         )
         return response

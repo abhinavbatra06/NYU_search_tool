@@ -1,0 +1,67 @@
+@font-face {
+  font-family: 'NYUPerstare';
+  src: url(https://webstatic.nyu.edu/fonts/NYUPerstare-VF.woff2),
+	   url(https://webstatic.nyu.edu/fonts/NYUPerstare-VF.woff);
+}
+
+.generic-content__content .content-wrapper b > a {
+  font-weight: 700 !important; }
+
+.generic-content .content-wrapper h1, .generic-content .content-wrapper h1 > a,  .generic-content .content-wrapper h1 > b ,  .generic-content .content-wrapper h1 > a > b, .generic-content .content-wrapper h1 > b > a  {
+  letter-spacing: -1px;
+  line-height: 1.15;
+  font-size: 3.75em ;
+}    
+
+.generic-content .content-wrapper h2,   .generic-content .content-wrapper h3,   .generic-content .content-wrapper h4,   .generic-content .content-wrapper h5,   .generic-content .content-wrapper h6,
+.generic-content .content-wrapper h2 > a,   .generic-content .content-wrapper h3 > a,   .generic-content .content-wrapper h4 > a,   .generic-content .content-wrapper h5 > a,   .generic-content .content-wrapper h6 > a,
+.generic-content .content-wrapper h2 > b,   .generic-content .content-wrapper h3 > b,   .generic-content .content-wrapper h4 > b,   .generic-content .content-wrapper h5 > b,   .generic-content .content-wrapper h6 > b,
+.generic-content .content-wrapper h2 > a > b,   .generic-content .content-wrapper h3 > a > b,   .generic-content .content-wrapper h4 > a > b,   .generic-content .content-wrapper h5 > a > b,   .generic-content .content-wrapper h6 > a > b,
+.generic-content .content-wrapper h2 > b > a,   .generic-content .content-wrapper h3 > b > a,   .generic-content .content-wrapper h4 > b > a,   .generic-content .content-wrapper h5 > b > a,   .generic-content .content-wrapper h6 > b > a {
+  font-family: "NYUPerstare", Helvetica, Arial, sans-serif;
+  font-weight: 700 ;
+  margin: 30px 0 15px; 
+  letter-spacing:0px;
+  line-height:1.3;
+  text-transform: none !important; }
+
+.gc--textbordertop .content-wrapper h2:first-child, .gc--textbordertop .content-wrapper h3:first-child, .gc--textbordertop .content-wrapper h4:first-child, .gc--textbordertop .content-wrapper h5:first-child, .gc--textbordertop .content-wrapper h6:first-child,
+.gc--textborderright .content-wrapper h2:first-child, .gc--textborderright .content-wrapper h3:first-child, .gc--textborderright .content-wrapper h4:first-child, .gc--textborderright .content-wrapper h5:first-child, .gc--textborderright .content-wrapper h6:first-child,
+.gc--textbordertbottom .content-wrapper h2:first-child, .gc--textbordertbottom .content-wrapper h3:first-child, .gc--textbordertbottom .content-wrapper h4:first-child, .gc--textbordertbottom .content-wrapper h5:first-child, .gc--textbordertbottom .content-wrapper h6:first-child,
+.gc--textborderleft .content-wrapper h2:first-child, .gc--textborderleft .content-wrapper h3:first-child, .gc--textborderleft .content-wrapper h4:first-child, .gc--textborderleft .content-wrapper h5:first-child, .gc--textborderleft .content-wrapper h6:first-child {
+  margin: 0 0 15px !important; } 
+
+
+h2.generic-content__title:first-child, h3.generic-content__title:first-child, h4.generic-content__title:first-child, h5.generic-content__title:first-child, h6.generic-content__title:first-child {
+  margin: 0 0 15px !important; }     
+
+.generic-content__content .content-wrapper h2:first-child, .generic-content__content .content-wrapper h3:first-child, .generic-content__content .content-wrapper h4:first-child, .generic-content__content .content-wrapper h5:first-child, .generic-content__content .content-wrapper h6:first-child {
+  margin: 0 0 15px !important; }     
+
+
+.generic-content .content-wrapper h2 {
+    font-size: 2.5em ;}
+
+.generic-content .content-wrapper h3 {
+    font-size: 1.9em ;}
+
+.generic-content .content-wrapper h4 {
+    font-size: 1.4em ;}
+
+
+.generic-content .content-wrapper h5 {
+    font-size: 1.13em ;}    
+
+.generic-content .content-wrapper h6 {
+    font-size: 1em ;}
+
+.generic-content .content-wrapper h4 b,
+.generic-content .content-wrapper h4 u,
+.generic-content .content-wrapper h4 i,
+.generic-content .content-wrapper h4 a {
+  color: inherit !important; }
+
+
+.gc--nospace {
+  margin-bottom:0px !important;
+}

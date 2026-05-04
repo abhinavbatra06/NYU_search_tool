@@ -96,6 +96,4 @@ Ingestion remains manual for launch one:
 
 ## Documentation
 
-- [SYSTEM_DESIGN.md](SYSTEM_DESIGN.md)
-- [Plan.md](Plan.md)
-
+- [search_logs_data_dictionary.md](search_logs_data_dictionary.md)

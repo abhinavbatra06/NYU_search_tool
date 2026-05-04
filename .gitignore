@@ -24,3 +24,10 @@ Thumbs.db
 # Temp files
 *.tmp
 ~$*
+
+# Archive files 
+questions.xlsx
+Plan.md
+SYSTEM_DESIGN.md
+SYSTEM_design.md
+test_html/

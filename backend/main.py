@@ -1,5 +1,6 @@
 """FastAPI entrypoint and route definitions."""
 
+import asyncio
 from datetime import datetime
 from fastapi import FastAPI, HTTPException, Request, status
 from fastapi.middleware.cors import CORSMiddleware
@@ -15,6 +16,7 @@ from .config import Config
 from .startup import validate_startup, get_health_status
 from .schemas import SearchRequest, SearchResponse, SearchResult, Faculty, HealthStatus, StartupStatus
 from .services.chroma import initialize_chroma
+from .services.log_service import log_search
 from .services.search import search_and_answer
 
 
@@ -128,9 +130,31 @@ async def search(
             query=body.query,
             timestamp=datetime.utcnow().isoformat()
         )
+
+        asyncio.create_task(
+            log_search(
+                question=body.query,
+                answer=answer,
+                results=formatted_results,
+                use_hybrid=body.use_hybrid,
+            )
+        )
+
         return response
 
     except Exception as e:
+        asyncio.create_task(
+            log_search(
+                question=body.query,
+                answer="",
+                results=None,
+                use_hybrid=body.use_hybrid,
+                success=False,
+                error_message=str(e),
+                error_type=type(e).__name__,
+            )
+        )
+
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Search failed: {str(e)}"

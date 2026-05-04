@@ -38,7 +38,8 @@ class Config:
 
     # Supabase settings (for auth)
     SUPABASE_URL = os.getenv("SUPABASE_URL")
-    SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+    SUPABASE_KEY = os.getenv("SUPABASE_KEY")  # anon key — used for JWT auth verification
+    SUPABASE_SERVICE_KEY = os.getenv("SUPABASE_SERVICE_KEY")  # service_role key — used for backend logging
     SUPABASE_JWT_SECRET = os.getenv("SUPABASE_JWT_SECRET")
     REQUIRE_SUPABASE = os.getenv("REQUIRE_SUPABASE", "false").lower() == "true"
 

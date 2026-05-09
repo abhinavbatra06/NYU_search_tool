@@ -97,3 +97,7 @@ Ingestion remains manual for launch one:
 ## Documentation
 
 - [search_logs_data_dictionary.md](search_logs_data_dictionary.md)
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE).

@@ -26,6 +26,7 @@ Thumbs.db
 ~$*
 
 # Archive files 
+Archive/
 questions.xlsx
 Plan.md
 SYSTEM_DESIGN.md
